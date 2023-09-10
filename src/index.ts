@@ -1,6 +1,6 @@
 import express from "express";
 import "#core/load-env.js";
-import {createRestApiServer, connectToDBServer, db} from '#core/servers/index.js';
+import {createRestApiServer, connectToDBServer} from '#core/servers/index.js';
 import path from "path";
 import url from "url";
 import {
@@ -28,9 +28,7 @@ restApiServer.listen(envConstants.PORT, async () => {
     console.log("Running API mock")
   }else{
     await connectToDBServer(envConstants.MONGODB_URI);
-    // await db.collection('books').insertOne({name: "Book 1"});
-    const books = await db.collection('books').find().toArray();
-    console.log({books});
+    console.log('Connected to DB!');
   };
   console.log(`Server ready at port ${envConstants.PORT}`);
 });

@@ -1,12 +1,12 @@
-import { BookRepository } from "./book.repository.js";
-import { Book } from "../book.model.js";
-import { db } from "../../mock-data.js";
+import { BookRepository } from './book.repository.js';
+import { Book } from '../book.model.js';
+import { db } from '../../mock-data.js';
 
 const insertBook = (book: Book) => {
   const id = (db.books.length + 1).toString();
   const newBook: Book = {
     ...book,
-    id,
+    id: id,
   };
 
   db.books = [...db.books, newBook];
